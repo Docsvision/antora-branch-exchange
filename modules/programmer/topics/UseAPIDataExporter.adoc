@@ -1,0 +1,83 @@
+[[ariaid-title1]]
+== Разработка компонента выгрузки
+
+[.dfn .term]_Компонент выгрузки_ должен выгрузить в поток данные карточек, список которых предоставит [.dfn .term]_компонентов определения состава передачи_.
+
+Программный класс [.dfn .term]_компонента выгрузки_ должен реализовывать интерфейс xref:IDataExporter_IN.adoc[IDataExporter] с единственным методом [.keyword .apiname]#GetCardXml#. Данный метод должен сохранить в поток `writeSteam` данные выгружаемых карточек и сохранить в объект `fileIds` идентификаторы выгруженных файлов карточек.
+
+Следующий код демонстрирует пример реализации [.dfn .term]_компонента выгрузки_, в котором в пакет выгружаемых данных будут включены данные карточек и атрибуты файлов карточек без бинарных данных.
+
+[source,pre,codeblock,language-csharp]
+----
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using DocsVision.Platform.ObjectManager;
+using DocsVision.Platform.ObjectManager.Metadata;
+using DocsVision.Platform.ObjectManager.SearchModel;
+using Docsvision.Replication.Interfaces;
+
+namespace Replication.Demo
+{
+    // Описание, переданное в DescriptionAttribute, будет выводиться 
+    //  в выпадающем списке Справочника настроек МФО
+    [ResName("Пример. Выгрузка")]
+    public class DataExporter : BaseHandler, IDataExporter
+    {
+        public virtual void GetCardXml(IExchangeEvent e, Stream writeSteam, out IEnumerable<Guid> fileIds, out bool handled)
+        {            
+            // Выставляем флаг, предотвращающий повторную выгрузку данных
+            handled = true;
+
+            // Формируются набор флагов экспорта данных: будут выгружены только 
+            //  данные карточек и атрибуты файлов, бинарные данные файлов выгружаться не будут.
+            // Бинарные данные планируется передавать методом TransferIntegrationTaskFile 
+            //  класса, реализующего транспорт к удаленному серверу Docsvision
+            ExportFlags flags = ExportFlags.ChildSections | ExportFlags.ChildRows | ExportFlags.LinkedFiles | ExportFlags.LinkedFilesNoData;
+
+            // Инициализируем инспектор выгрузки, который сформирует список идентификаторов файлов,
+            //  атрибуты которых попали в выгрузку
+            var inspector = new ExportCardDemoInspector(UserSession);
+
+            // Для примера, будут выгружены данные только первой карточки из списка карточек,
+            //  сформированного на этапе определения состава передачи
+            CardData cardData = UserSession.CardManager.GetCardData(e.Cards.First());
+
+            // Выгружаем данные в поток
+            cardData.SaveXml(writeStream, flags, inspector);
+            writeStream.Flush();
+
+            // Передаем список идентификаторов файлов, атрибуты которых были добавлены в выгрузку
+            fileIds = inspector.FileIds;
+        }
+    }
+
+    // Собственный класс инспектора экспорта данных, с возможность получения списка 
+    //   идентификаторов файлов, которые были выгружены
+    public class ExportCardDemoInspector : ExportCardInspector
+    {
+        private List<Guid> fileIds = new List<Guid>();
+
+        public ExportCardDemoInspector(UserSession session): base(session) {    }
+
+        public override void AfterExportFile(FileData fileData)
+        {
+            base.AfterExportFile(fileData);
+            fileIds.Add(fileData.Id);
+        }
+
+        // Идентификаторы выгруженных файлов
+        public IEnumerable<Guid> FileIds
+        {
+            get
+            {
+                return fileIds;
+            }
+        }
+    }
+}
+----
+
+*На уровень выше:* xref:../topics/UseAPI.adoc[Разработка компонента обмена]

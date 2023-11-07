@@ -1,0 +1,35 @@
+[[ariaid-title1]]
+== IEventResolver - интерфейс
+
+Описывает сигнатуру класса [.dfn .term]_компонента определения состава передачи_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.Interfaces
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.Interfaces.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IEventResolver
+----
+
+=== Методы
+
+[width="100%",cols="35%,65%",options="header",]
+|===
+|Имя |Описание
+|ResolveEvent(IExchangeEvent, out Boolean) a|
+При переопределении в производном классе, позволяет определить состав данных, передаваемых на удаленный сервер.
+
+Параметры:
+
+* e - событие обмена
+* cancel - возвращает true, если выгрузка не требуется
+
+|===
+
+=== Заметки
+
+Пример реализации смотрите в разделе xref:UseAPIEventResolver.adoc[Разработка компонента определения состава передачи].
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

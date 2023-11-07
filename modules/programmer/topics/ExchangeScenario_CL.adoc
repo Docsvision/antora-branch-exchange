@@ -1,0 +1,110 @@
+[[ariaid-title1]]
+== ExchangeScenario - класс
+
+Класс ExchangeScenario предоставляет параметры [.dfn .term]_сценария обмена_, определенного в [.dfn .term]_Справочнике настроек МФО_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.ObjectModel
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.ObjectModel.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class ExchangeScenario : ObjectBase, IExchangeScenario
+----
+
+=== Свойства
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|ConflictHandler a|
+Задает или возвращает название класса, реализующего [.dfn .term]_компонент разрешения конфликтов_. _Не используется в текущей реализации._
+
+Тип: System.String
+
+|ExportDatasetHandler a|
+Задает или возвращает название класса, реализующего [.dfn .term]_компонент определения состава передачи_.
+
+Тип: System.String
+
+|ExportHandler a|
+Задает или возвращает название класса, реализующего [.dfn .term]_компонент выгрузки_.
+
+Тип: System.String.
+
+|ImportHandler a|
+Задает или возвращает название класса, реализующего [.dfn .term]_компонент загрузки_.
+
+Тип: System.String
+
+|Kind a|
+Задает или возвращает идентификатор вида карточки, для которой предназначен данный [.dfn .term]_сценарий обмена_.
+
+Тип System.Guid
+
+|Name a|
+Задает или возвращает название [.dfn .term]_сценария обмена_.
+
+Тип System.String
+
+|PostExportHandler a|
+Задает или возвращает идентификатор бизнес-процесса, который будет запущен на сервере получателя после завершения работы [.dfn .term]_компонента загрузки_.
+
+Тип System.Guid
+
+|RecipientsHandler a|
+Задает или возвращает название класса, реализующего [.dfn .term]_компонент определения адресатов_.
+
+Тип System.String
+
+|===
+
+=== Поля
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|ConflictHandlerProperty a|
+Определяет свойство "Алгоритм разрешения конфликтов".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|ExportDatasetHandlerProperty a|
+Определяет свойство "Обработчик определяющий, что выгружать".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|ExportHandlerProperty a|
+Определяет свойство "Обработчик выполняющий выгрузку данных".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|ImportHandlerProperty a|
+Определяет свойство "Обработчик загрузки данных".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|KindProperty a|
+Определяет свойство "Вид карточки".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|NameProperty a|
+Определяет свойство "Имя сценария".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|PostExportHandlerProperty a|
+Определяет свойство "Обработчик после выгрузки".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|RecipientsHandlerProperty a|
+Определяет свойство "Обработчик вычисления адресатов".
+
+Тип: DocsVision.Platform.ObjectModel.ObjectProperty
+
+|===
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

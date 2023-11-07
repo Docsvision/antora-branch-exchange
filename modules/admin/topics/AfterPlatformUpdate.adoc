@@ -1,0 +1,11 @@
+[[ariaid-title1]]
+== Действия после обновления Платформы
+
+После обновления версии модуля «Docsvision 5. Платформа» нужно обновить библиотеку карточек «Модуля репликации справочников». Для этого выполните на сервере Docsvision команду от имени локального администратора с правами администратора Docsvision:
+
+[source,pre,codeblock]
+----
+{Каталог установки Docsvision}\Tools\ServerConsole.exe /c /n Replication
+----
+
+*Parent topic:* xref:../topics/Administrator_functions.adoc[Функции администратора]

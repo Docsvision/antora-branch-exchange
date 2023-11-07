@@ -1,0 +1,35 @@
+[[ariaid-title1]]
+== IRecipientResolver - интерфейс
+
+Описывает сигнатуру класса [.dfn .term]_компонента определения адресатов_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.Interfaces
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.Interfaces.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IRecipientResolver
+----
+
+=== Методы
+
+[width="100%",cols="32%,68%",options="header",]
+|===
+|Имя |Описание
+|ResolveEvent(IExchangeEvent, Boolean) a|
+При переопределении в производном классе формирует список из идентификаторов серверов [.dfn .term]_получателей_.
+
+Параметры:
+
+* e - событие обмена
+* cancel - возвращает true, если выгрузка не требуется
+
+|===
+
+=== Заметки
+
+Пример реализации смотрите в разделе xref:UseAPIRecipientResolver.adoc[Разработка компонента определения адресатов].
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

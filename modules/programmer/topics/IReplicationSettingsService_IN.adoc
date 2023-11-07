@@ -1,0 +1,113 @@
+[[ariaid-title1]]
+== IReplicationSettingsService - интерфейс
+
+Интерфейс IReplicationSettingsService определяет методы, предоставляемые сервисом для работы со [.dfn .term]_Справочником настроек МФО_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.ObjectModel.Services
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.ObjectModel.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IReplicationSettingsService
+----
+
+=== Методы
+
+[width="100%",cols="41%,59%",options="header",]
+|===
+|Имя |Описание
+|AddNewExchangeScenario a|
+Добавляет новый [.dfn .term]_сценарий обмена_.
+
+Тип: List<xref:IExchangeScenario_IN.adoc[IExchangeScenario]>
+
+|DeleteExchangeScenario (IExchangeScenario) a|
+Удаляет существующий [.dfn .term]_сценарий обмена_.
+
+Параметры:
+
+* exchangeScenario - удаляемый сценарий обмена
+
+|GetConflictHandlers a|
+Возвращает описание доступных [.dfn .term]_компонентов разрешения конфликтов_. _Не используется в текущей реализации._
+
+Тип: List<xref:HandlerInfo_CL.adoc[HandlerInfo]>
+
+|GetExchangeScenarios a|
+Возвращает доступные сценарии обмена.
+
+Тип: List<xref:IExchangeScenario_IN.adoc[IExchangeScenario]>
+
+|GetExportDatasetHandlers a|
+Возвращает описание доступных [.dfn .term]_компонентов определения состава передачи_.
+
+Тип: List<xref:HandlerInfo_CL.adoc[HandlerInfo]>
+
+|GetExportHandlers a|
+Возвращает описание доступных [.dfn .term]_компонентов выгрузки_.
+
+Тип: List<xref:HandlerInfo_CL.adoc[HandlerInfo]>
+
+|GetImportHandlers a|
+Возвращает описание доступных [.dfn .term]_компонентов загрузки данных_.
+
+Тип: List<xref:HandlerInfo_CL.adoc[HandlerInfo]>
+
+|GetRecepientsHandlers a|
+Возвращает описание доступных [.dfn .term]_компонентов определения адресатов_.
+
+Тип: List<xref:HandlerInfo_CL.adoc[HandlerInfo]>
+
+|===
+
+=== Примеры
+
+Следующий код демонстрирует пример использования сервиса управления сценариями обмена.
+
+[source,pre,codeblock,language-csharp]
+----
+//Создание пользовательской сессии
+SessionManager sessionManager = SessionManager.CreateInstance(dvServerUrl);
+UserSession userSession = sessionManager.CreateSession();
+var sessionContainer = new System.ComponentModel.Design.ServiceContainer();
+sessionContainer.AddService(typeof(DocsVision.Platform.ObjectManager.UserSession), userSession);
+
+//Инициализация контекста
+ObjectContext objectContext = new ObjectContext(sessionContainer);
+objectContext.AddService<IPersistentStore>(DocsVisionObjectFactory.CreatePersistentStore(new SessionProvider(userSession), null));
+
+// Получения сервис-реестров
+var serviceFactoryRegistry = objectContext.GetService<IServiceFactoryRegistry>();
+var mapperFactoryRegistry = objectContext.GetService<IObjectMapperFactoryRegistry>();
+
+// Добавления фабрики преобразователей данных МФО
+mapperFactoryRegistry.RegisterFactory(typeof(ReplicationMapperFactory));
+            
+// Добавление фабрики сервисов МФО
+serviceFactoryRegistry.RegisterFactory(typeof(ReplicationServiceFactory));
+            
+// Получение сервиса для работы со сценариями обмена
+IReplicationSettingsService iReplicationSettingsService = objectContext.GetService<IReplicationSettingsService>();
+
+// Регистрация нового сценария обмена
+ExchangeScenario exchangeScenario = (ExchangeScenario)iReplicationSettingsService.AddNewExchangeScenario();
+
+// Передаем полное название классов компонентов обмена
+exchangeScenario.ExportDatasetHandler = "Replication.DataExporters.ExportDataset";
+exchangeScenario.ExportHandler = "Replication.DataExporters.Export";
+exchangeScenario.ImportHandler = "Replication.DataImporters.Import";
+exchangeScenario.RecipientsHandler = "Replication.DataExporters.Recipients";
+
+// Идентификатор вида карточки, для которого разрабатывается сценарий обмена
+exchangeScenario.Kind = new Guid("8E40F327-9517-4A43-998D-BF2BD619588D");
+
+// Название сценария обмена
+exchangeScenario.Name = "Сценарий для исходящего документа";
+
+// Обязательное сохранение
+objectContext.SaveObject<ExchangeScenario>(exchangeScenario);
+----
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

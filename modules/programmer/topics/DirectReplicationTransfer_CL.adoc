@@ -1,0 +1,133 @@
+[[ariaid-title1]]
+== DirectReplicationTransfer - класс
+
+Класс DirectReplicationTransfer предоставляет методы прямой передачи [.dfn .term]__Заданий интеграции##на удаленный сервер Docsvision.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.Extensibility.Transfers
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.Extensibility.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class DirectReplicationTransfer : IReplicationTransfer
+----
+
+=== Конструкторы
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|DirectReplicationTransfer(ObjectContext, Guid) a|
+Инициализирует новый экземпляр класса [.keyword .apiname]#DirectReplicationTransfer#.
+
+Параметры:
+
+* context - контекст объектов
+* remoteServerId - идентификатор удаленного сервера
+
+|===
+
+=== Свойства
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|Context a|
+Возвращает контекст объектов.
+
+Тип: DocsVision.Platform.ObjectModel.ObjectContext
+
+|RemoteServer a|
+Возвращает объектную модель карточки сервера, являющегося [.dfn .term]_получателем_.
+
+Тип: DocsVision.BackOffice.ObjectModel.ServersServer
+
+|RemoteServerId a|
+Возвращает идентификатор удаленного сервера.
+
+Тип: System.Guid
+
+|===
+
+=== Методы
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|FinishTransfer(Guid) |Устанавливает на удаленном сервере Docsvision состояние [.dfn .term]_Задания интеграции_ в значение «Получено».
+|Transfer(String) a|
+Передает на удаленный сервер Docsvision [.dfn .term]_Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
+
+Параметры:
+
+* data - строка, содержащая XML данные карточки [.dfn .term]_Задания интеграции_
+
+|TransferIntegrationTask(Guid, String) a|
+Передает на удаленный сервер Docsvision [.dfn .term]_Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек – бинарные данные файлов не передаются.
+
+Параметры:
+
+* taskId - идентификатор карточки Задания интеграции
+* data - строка, содержащая XML данные карточки [.dfn .term]_Задания интеграции_
+
+|TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean) a|
+Передает на удаленный сервер Docsvision бинарные данные файлов, атрибуты которых переданы методом TransferIntegrationTask.
+
+Параметры:
+
+* taskId - идентификатор Задания интеграции
+* originalFileId - идентификатор передаваемого файла
+* fileData - данные файла
+* compressed - признак использования сжатия файлов при передаче. _Не используется в текущей реализации._
+
+Тип: Docsvision.Replication.Interfaces.FileState
+
+Статус передачи файла на удаленный сервер
+
+|===
+
+=== Делегаты
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|CreateRemoteSessionDelegate |Представляет метод для получения сессии к удаленному серверу Docsvision. Может быть использован для реализации нестандартного способа подключения.
+|ReconnectionErrorHandler(ReconnectionEventArgs) |Представляет метод обработки события OnReconnectionError.
+|===
+
+=== События
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|OnReconnectionError |Представляет метод обработки ошибки соединения с удаленным сервером. Тип DirectReplicationTransfer. ReconnectionErrorHandler.
+|===
+
+=== Поля
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|ReconnectionRepeats a|
+Количество попыток соединения с сервером [.dfn .term]_получателя_ при его недоступности.
+
+Тип: System.Int32
+
+|ReconnectionTimout a|
+Время (в миллисекундах) задержки между попытками соединиться с недоступным сервером.
+
+Тип: System.Int32
+
+|RemoteSessionCreator a|
+Представляет метод выполняющий открытие подключения к удаленному серверу Docsvision ([.dfn .term]_получателю_).
+
+Тип: DirectReplicationTransfer. CreateRemoteSessionDelegate.
+
+|===
+
+=== Заметки
+
+Пара методов [.keyword .apiname]#TransferIntegrationTask# и [.keyword .apiname]#TransferIntegrationTaskFile# (должны использоваться совместно) позволяет передавать «тяжелые» данные файлов и более легкие данные карточек в разных пакетах. Метод [.keyword .apiname]#Transfer# передает данные карточек и файлы в одном пакете.
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

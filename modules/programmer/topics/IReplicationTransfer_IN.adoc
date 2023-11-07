@@ -1,0 +1,75 @@
+[[ariaid-title1]]
+== IReplicationTransfer - интерфейс
+
+Интерфейс [.keyword .apiname]#IReplicationTransfer# определяет список методов и свойств, которые должен реализовывать класс, обеспечивающий передачу [.dfn .term]_Заданий интеграции_ на удаленный сервер Docsvision.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.Extensibility.Transfers
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.Extensibility.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IReplicationTransfer
+----
+
+=== Свойства
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|RemoteServerId |Возвращает идентификатор удаленного сервера Docsvision, на который передается [.dfn .term]_Задание интеграции_.
+|===
+
+=== Методы
+
+[cols=",",options="header",]
+|===
+|Имя |Описание
+|FinishTransfer(Guid) a|
+Изменяет на удаленном сервере статус приема [.dfn .term]_Задания интеграции_ на «Получено».
+
+Параметры:
+
+* taskId – идентификатор задания интеграции, статус которого изменяется
+
+|Transfer(String) a|
+Передает на удаленный сервер Docsvision [.dfn .term]_Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
+
+Параметры:
+
+* data – сериализованные данные Задания интеграции
+
+Тип: System.Boolean
+
+Результат передачи: true - передача была успешной, иначе - false
+
+|TransferIntegrationTask(Guid, String) a|
+Передает на удаленный сервер Docsvision [.dfn .term]_Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек – бинарные данные файлов не передаются.
+
+Параметры:
+
+* taskId - идентификатор Задания интеграции
+* taskData - передаваемые данные карточек
+
+Тип: System.Boolean
+
+Результат передачи: true - передача была успешной, иначе - false
+
+|TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean) a|
+Передает на удаленный сервер Docsvision бинарные данные файлов, атрибуты которых переданы методом TransferIntegrationTask.
+
+Параметры:
+
+* taskId - идентификатор Задания интеграции
+* originalFileId - идентификатор передаваемого файла
+* fileData - данные файла
+* compressed - признак использования сжатия файлов при передаче.
+
+Тип: Docsvision.Replication.Interfaces.FileState
+
+Статус передачи файла на удаленный сервер
+
+|===
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

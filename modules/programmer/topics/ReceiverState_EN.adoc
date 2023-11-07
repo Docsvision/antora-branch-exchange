@@ -1,0 +1,29 @@
+[[ariaid-title1]]
+== ReceiverState - перечисление
+
+Определяет статус задания интеграции у [.dfn .term]_получателя_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.ObjectModel
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.ObjectModel.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public enum ReceiverState
+----
+
+=== Члены
+
+[width="100%",cols="29%,71%",options="header",]
+|===
+|Имя члена |Описание
+|Recieved |Получено.
+|InWork |Обрабатывается загрузчиком.
+|Locked |Обработка остановлена из-за блокировки.
+|Handled |Успешно обработано загрузчиком.
+|Error |При обработке произошла ошибка.
+|Receiving |Принимается.
+|===
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

@@ -1,0 +1,44 @@
+[[ariaid-title1]]
+== QueueItem - класс
+
+Класс QueueItem представляет событие в [.dfn .term]_Очереди событий_.
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.ObjectModel
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.ObjectModel.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class QueueItem : ObjectBase, IEventQueueItem
+----
+
+=== Свойства
+
+[width="100%",cols="24%,76%",options="header",]
+|===
+|Имя |Описание
+|Details |Возвращает дополнительные сведения для обработки события. Тип System.String.
+|EventDateTime |Возвращает дату и время генерации события. Тип System.DateTime.
+|EventTypeId |Возвращает идентификатор типа события, определенного в [.dfn .term]_Справочнике настроек МФО_. Тип System.Guid.
+|Id |Возвращает уникальный идентификатор события. Тип System.Guid.
+|Log |Возвращает результат обработки. Тип System.String.
+|ObjectId |Возвращает идентификатор карточки, являющейся источником события. Тип System.Guid.
+|State |Возвращает статус обработки события. Тип xref:QueueItemState_EN.adoc[QueueItemState].
+|===
+
+=== Поля
+
+[width="100%",cols="25%,75%",options="header",]
+|===
+|Имя |Описание
+|DetailsProperty |Определяет свойство "Детали". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|EventDateTimeProperty |Определяет свойство "Время возникновения события". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|EventTypeIdProperty |Определяет свойство "Идентификатор элемента справочника сценариев обмена". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|IdProperty |Определяет свойство "Идентификатор события". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|LogProperty |Определяет свойство "Лог". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|ObjectIdProperty |Определяет свойство "Идентификатор объекта". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|StateProperty |Определяет свойство "Статус обработки события". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|===
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]

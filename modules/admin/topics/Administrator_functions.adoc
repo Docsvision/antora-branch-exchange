@@ -1,0 +1,7 @@
+[[ariaid-title1]]
+== Функции администратора
+
+* *xref:../topics/MfoDictionary.adoc[Справочник настроек МФО]* +
+* *xref:../topics/HowNewConfig.adoc[Настройка нового сценария обмена]* +
+* *xref:../topics/HowShowList.adoc[Просмотр очереди событий]* +
+* *xref:../topics/AfterPlatformUpdate.adoc[Действия после обновления Платформы]* +

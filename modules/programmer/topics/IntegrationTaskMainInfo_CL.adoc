@@ -1,0 +1,48 @@
+[[ariaid-title1]]
+== IntegrationTaskMainInfo - класс
+
+Класс IntegrationTaskMainInfo представляет объектную модель секции "Основная информация" карточки "Задание интеграции".
+
+* [.keyword]*Пространство имен:* Docsvision.Replication.ObjectModel
+* [.keyword]*Сборка:* [.ph .filepath]`Docsvision.Replication.ObjectModel.dll`
+
+=== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class IntegrationTaskMainInfo : BaseCardSectionRow
+----
+
+=== Свойства
+
+[width="100%",cols="28%,72%",options="header",]
+|===
+|Имя |Описание
+|EventDateTime |Задает или возвращает время добавления события в [.dfn .term]_Очередь событий_. Тип System.DateTime.
+|EventTypeId |Задает или возвращает идентификатор используемого сценария из [.dfn .term]_Справочника настроек МФО_. Тип System.Guid.
+|ExtendedData |Задает или возвращает дополнительные сведения для выполнения загрузки данных. Тип System.String.
+|Id |Задает или возвращает уникальный идентификатор события интеграции. Тип System.Guid.
+|ObjectId |Задает или возвращает идентификатор карточки, являющейся источником события. Тип System.Guid.
+|ReceiverId |Задает или возвращает идентификатор сервера, которому предназначено событие интеграции. Тип System.Guid.
+|ReceiverState |Задает или возвращает статус задания у [.dfn .term]_получателя_. Тип xref:ReceiverState_EN.adoc[ReceiverState].
+|SenderId |Задает или возвращает идентификатор сервера, с которого был отправлено событие интеграции. Тип System.Guid.
+|SenderState |Задает или возвращает статус задания у [.dfn .term]_отправителя_. Тип xref:SenderState_EN.adoc[SenderState].
+|===
+
+=== Поля
+
+[width="100%",cols="28%,72%",options="header",]
+|===
+|Имя |Описание
+|EventDateTimeProperty |Определяет свойство "Время возникновения события". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|EventTypeIdProperty |Определяет свойство "Идентификатор типа события". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|ExtendedDataProperty |Определяет свойство "Дополнительные сведения". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|IdProperty |Определяет свойство "Идентификатор события интеграции". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|ObjectIdProperty |Определяет свойство "Идентификатор объекта". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|ReceiverIdProperty |Определяет свойство "Идентификатор сервера-получателя". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|ReceiverStateProperty |Определяет свойство "Статус задания на площадке-получателе". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|SenderIdProperty |Определяет свойство "Идентификатор сервера-отправителя". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|SenderStateProperty |Определяет свойство "Статус задания на площадке-отправителе". Тип DocsVision.Platform.ObjectModel.ObjectProperty.
+|===
+
+*На уровень выше:* xref:../topics/API.adoc[Описание API Модуля]
