@@ -1,0 +1,31 @@
+= HandlerInfo - класс
+
+Класс HandlerInfo предоставляет описание _компонента обмена_ в _сценарии обмена_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class HandlerInfo : IConvertible
+----
+
+== Конструкторы
+
+[cols=",",options="header"]
+|===
+|Имя |Описание
+|HandlerInfo() |Инициализирует новый экземпляр класса HandlerInfo.
+|===
+
+== Свойства
+
+[cols=",",options="header"]
+|===
+|Имя |Описание
+|Description |Задает или возвращает описание _компонента обмена_. Тип System.String.
+|Name |Задает или возвращает название _компонента обмена_. Тип System.String.
+|Type |Задает или возвращает полное название класса, реализующего _компонент обмена_. Тип System.String.
+|===

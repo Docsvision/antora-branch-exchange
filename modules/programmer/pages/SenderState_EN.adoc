@@ -1,0 +1,24 @@
+= SenderState - перечисление
+
+Определяет статус задания интеграции у _отправителя_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public enum SenderState
+----
+
+== Члены
+
+[width="100%",cols="31%,69%",options="header"]
+|===
+|Имя члена |Описание
+|Scheduled |Создано.
+|Sent |Отправлено.
+|Confirmed |Подтверждено.
+|Sending |Передается.
+|===

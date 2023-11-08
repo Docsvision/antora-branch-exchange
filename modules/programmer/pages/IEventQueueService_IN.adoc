@@ -1,0 +1,117 @@
+= IEventQueueService - интерфейс
+
+Сервис объектной модели библиотеки "Модуль межфилиального обмена", предназначенный для управления _Очередью событий_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel.Services
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IEventQueueService
+----
+
+== Методы
+
+[width="100%",cols="41%,59%",options="header"]
+|===
+|Имя |Описание
+|ChangeEvent(Guid, QueueItemState, String) a|
+Изменение состояния существующего события.
+
+Параметры:
+
+* id - идентификатор события
+* state - новое состояние
+* log - данные для журнала
+
+|CreateEvent(Guid, Guid, String) a|
+Создание нового события в _Очереди событий_.
+
+Параметры:
+
+* eventTypeId - идентификатор типа события
+* objectId - идентификатор объекта, вызвавшего событие
+* details - дополнительные данные
+
+|DeleteEvent(Guid) a|
+Удаление из очереди события с указанным идентификатором.
+
+Параметры:
+
+* id - идентификатор удаляемого события
+
+|DeleteEvents(Guid[]) a|
+Удаление массива событий из _Очереди событий_.
+
+Параметры:
+
+* ids - массив идентификаторов удаляемых событий
+
+|DeleteEventsForObject(Guid, DateTime) a|
+Удаляет событие, поступившее от указанного объекта, из _Очереди событий_.
+
+Параметры:
+
+* objectId - идентификатор объекта, вызвавшего событие
+* upToDate - дата создания события, до которой события будут удалены
+
+|GetEvents a|
+Возвращает все события _Очереди событий_.
+
+Тип: IEnumerable<IEventQueueItem>
+
+|GetEvents(Guid) a|
+Получает коллекцию событий для указанного объекта.
+
+Параметры:
+
+* objectId - идентификатор объекта
+
+Тип: IEnumerable<IEventQueueItem>
+
+|GetEvents(QueueItemState) a|
+Получает список события имеющих указанное состояние.
+
+Параметры:
+
+* state - состояние события
+
+Тип: IEnumerable<IEventQueueItem>
+
+|===
+
+== Примеры
+
+Ниже приведен пример программной (без использования бизнес-процесса "Регистрация события МФО") регистрации события в очереди _Очереди событий_.
+
+[source,pre,codeblock,language-csharp]
+----
+//Создание пользовательской сессии
+SessionManager sessionManager = SessionManager.CreateInstance(dvServerUrl);
+UserSession userSession = sessionManager.CreateSession();
+var sessionContainer = new System.ComponentModel.Design.ServiceContainer();
+sessionContainer.AddService(typeof({dv}.Platform.ObjectManager.UserSession), userSession);
+
+//Инициализация контекста
+ObjectContext objectContext = new ObjectContext(sessionContainer);
+objectContext.AddService<IPersistentStore>({dv}ObjectFactory.CreatePersistentStore(new SessionProvider(userSession), null));
+            
+var serviceFactoryRegistry = objectContext.GetService<IServiceFactoryRegistry>();
+
+//Добавление фабрики сервисов МФО
+serviceFactoryRegistry.RegisterFactory(typeof(ReplicationServiceFactory));
+            
+//Получение сервиса для работы с очередью сообщений            
+IEventQueueService iEventQueueService = objectContext.GetService<IEventQueueService>();
+
+//Идентификатор сценария из справочника
+Guid typeId = new Guid("00000000-0000-0000-0000-000000000000");
+
+//идентификатор карточки для которой формируется событие
+Guid objectId = new Guid("00000000-0000-0000-0000-000000000001");
+
+//Добавление события
+iEventQueueService.CreateEvent(typeId, objectId, "Событие созданное из кода");
+----

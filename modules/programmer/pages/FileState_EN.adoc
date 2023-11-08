@@ -1,0 +1,26 @@
+= FileState - перечисление
+
+Определяет возможные статусы переноса файла на удаленный сервер {dv}.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
+* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public enum FileState
+----
+
+== Члены
+
+[cols=",",options="header"]
+|===
+|Имя члена |Описание
+|NeedTransfer |Необходим перенос
+|Transfered |Перенесён на удалённый сервер
+|NotChanged |Не изменён на удалённом сервере
+|FoundSame |Найден подобный на удалённом сервере
+|Locked |Заблокирован на удалённом сервере
+|Finished |Завершен
+|===

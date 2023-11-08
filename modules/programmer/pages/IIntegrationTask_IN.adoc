@@ -1,0 +1,25 @@
+= IIntegrationTask - интерфейс
+
+Описывает параметры _Задания интеграции_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
+* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IIntegrationTask
+----
+
+== Свойства
+
+[width="100%",cols="20%,80%",options="header"]
+|===
+|Имя |Описание
+|EventId |Возвращает идентификатор события интеграции. Тип System.Guid.
+|EventTypeId |Возвращает идентификатор сценария, описанного в _Справочнике настроек МФО_ обработки события. Тип System.Guid.
+|ExtendedData |Возвращает данные, необходимые для выполнения _Задания интеграции_. Тип System.String.
+|ObjectId |Возвращает идентификатор объекта вызывавшего событие интеграции. Тип System.Guid.
+|SenderId |Возвращает идентификатор сервера _отправителя_. Тип System.Guid.
+|===

@@ -1,0 +1,22 @@
+= FileType - перечисление
+
+Определяет возможные типы содержимого файлов, приложенных к Заданию интеграции.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public enum FileType
+----
+
+== Члены
+
+[cols=",",options="header"]
+|===
+|Имя члена |Описание
+|Binary |Содержимое является бинарными данными файла.
+|Xml |Содержимое является файлом XML.
+|===

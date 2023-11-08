@@ -1,0 +1,45 @@
+= IntegrationTaskMainInfo - класс
+
+Класс IntegrationTaskMainInfo представляет объектную модель секции "Основная информация" карточки "Задание интеграции".
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class IntegrationTaskMainInfo : BaseCardSectionRow
+----
+
+== Свойства
+
+[width="100%",cols="28%,72%",options="header"]
+|===
+|Имя |Описание
+|EventDateTime |Задает или возвращает время добавления события в _Очередь событий_. Тип System.DateTime.
+|EventTypeId |Задает или возвращает идентификатор используемого сценария из _Справочника настроек МФО_. Тип System.Guid.
+|ExtendedData |Задает или возвращает дополнительные сведения для выполнения загрузки данных. Тип System.String.
+|Id |Задает или возвращает уникальный идентификатор события интеграции. Тип System.Guid.
+|ObjectId |Задает или возвращает идентификатор карточки, являющейся источником события. Тип System.Guid.
+|ReceiverId |Задает или возвращает идентификатор сервера, которому предназначено событие интеграции. Тип System.Guid.
+|ReceiverState |Задает или возвращает статус задания у _получателя_. Тип xref:ReceiverState_EN.adoc[ReceiverState].
+|SenderId |Задает или возвращает идентификатор сервера, с которого был отправлено событие интеграции. Тип System.Guid.
+|SenderState |Задает или возвращает статус задания у _отправителя_. Тип xref:SenderState_EN.adoc[SenderState].
+|===
+
+== Поля
+
+[width="100%",cols="28%,72%",options="header"]
+|===
+|Имя |Описание
+|EventDateTimeProperty |Определяет свойство "Время возникновения события". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|EventTypeIdProperty |Определяет свойство "Идентификатор типа события". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|ExtendedDataProperty |Определяет свойство "Дополнительные сведения". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|IdProperty |Определяет свойство "Идентификатор события интеграции". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|ObjectIdProperty |Определяет свойство "Идентификатор объекта". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|ReceiverIdProperty |Определяет свойство "Идентификатор сервера-получателя". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|ReceiverStateProperty |Определяет свойство "Статус задания на площадке-получателе". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|SenderIdProperty |Определяет свойство "Идентификатор сервера-отправителя". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|SenderStateProperty |Определяет свойство "Статус задания на площадке-отправителе". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|===

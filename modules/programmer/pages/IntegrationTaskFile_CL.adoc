@@ -1,0 +1,39 @@
+= IntegrationTaskFile - класс
+
+Класс [.keyword .apiname]#IntegrationTaskFile# содержит данные файла, приложенного к Заданию интеграции.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class IntegrationTaskFile : BaseCardSectionRow
+----
+
+== Свойства
+
+[cols=",",options="header"]
+|===
+|Имя |Описание
+|Compressed |Признак сжатия содержимого файла. Тип: System.Guid.
+|ContentFileId |Идентификатор оригинального файла в {dv}. Тип: System.Guid.
+|FileId |Идентификатор файла. Тип: System.Guid.
+|Hash |Контрольная сумма файла. Тип: System.String.
+|State |Статус переноса файла. Тип xref:FileState_EN.adoc[FileState]
+|Type |Тип содержимого файла. Тип xref:FileType_EN.adoc[FileType]
+|===
+
+== Поля
+
+[width="100%",cols="26%,74%",options="header"]
+|===
+|Имя |Описание
+|CompressedProperty |Определяет свойство "Сжат". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|ContentFileIdProperty |Определяет свойство "Идентификатор файла с данными". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|FileIdProperty |Определяет свойство "Идентификатор файла". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|HashProperty |Определяет свойство "Хэш". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|StateProperty |Определяет свойство "Статус переноса". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|TypeProperty |Определяет свойство "Тип файла". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|===

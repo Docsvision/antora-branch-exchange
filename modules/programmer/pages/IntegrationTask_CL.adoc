@@ -1,0 +1,48 @@
+= IntegrationTask - класс
+
+Класс IntegrationTask представляет объектную модель карточки "Задание интеграции".
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class IntegrationTask : BaseCard
+----
+
+== Свойства
+
+[width="100%",cols="25%,75%",options="header"]
+|===
+|Имя |Описание
+|Files |Возвращает коллекцию файлов, приложенных к Заданию интеграции. Тип ObjectCollection<xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]>.
+|LoadingProtocol |Возвращает протокол загрузки события на стороне _получателя_. Тип ObjectCollection<xref:LoadingProtocolItem_CL.adoc[LoadingProtocolItem]>.
+|MainInfo |Возвращает основную информацию о карточке. Тип xref:IntegrationTaskMainInfo_CL.adoc[IntegrationTaskMainInfo].
+|===
+
+== Методы
+
+[cols=",",options="header"]
+|===
+|Имя |Описание
+|AddFile(Guid) a|
+Добавляет в карточку файл с указанным идентификатором.
+
+Параметры:
+
+* fileId – идентификатор прикладываемого файла
+
+Тип: xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]
+
+|===
+
+== Поля
+
+[width="100%",cols="26%,74%",options="header"]
+|===
+|Имя |Описание
+|LoadingProtocolProperty |Определяет свойство "Протокол загрузки". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|MainInfoProperty |Определяет свойство "Основная информация". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|===

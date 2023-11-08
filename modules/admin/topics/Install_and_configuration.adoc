@@ -1,7 +1,0 @@
-[[ariaid-title1]]
-== Установка и настройка
-
-* *xref:../topics/Installation_kit.adoc[Состав установочного комплекта]* +
-* *xref:../topics/Install_server.adoc[Установка серверной части Модуля]* +
-* *xref:../topics/Install_client.adoc[Установка клиентской части Модуля]* +
-* *xref:../topics/HowConfig.adoc[Подготовка к работе]* +

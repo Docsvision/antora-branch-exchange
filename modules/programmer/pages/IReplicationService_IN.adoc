@@ -1,0 +1,115 @@
+= IReplicationService - интерфейс
+
+Сервис объектной модели библиотеки "Модуль межфилиального обмена", предназначенный для обработки _Заданий интеграции_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
+* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public interface IReplicationService
+----
+
+== Методы
+
+[cols=",",options="header"]
+|===
+|Имя |Описание
+|EnqueueEvents |Запускает обработку очереди событий МФО.
+|FindScheduledTasks(Guid) a|
+Выполняет поиск исходящих заданий интеграции для указанного удаленного сервера.
+
+Параметры:
+
+* forReceiverServerId - идентификатор сервера-получателя
+
+Тип: IEnumerable<CardData>
+
+Коллекция карточек.
+
+|HandleEvent(IEventQueueItem, Boolean) a|
+Обрабатывает элемент очереди событий.
+
+Параметры:
+
+* eventQueueItem - событие обмена
+* throwExceptions - флаг, указывающий на необходимость возврата исключения при возникновении ошибки
+
+Тип: System.Boolean
+
+Результат обработки: true - успешно, иначе - false
+
+|ImportIntegrationTasks(Boolean) a|
+Выполняет загрузку необработанных входящих _Заданий интеграции_.
+
+Параметры:
+
+* ignoreExceptions - true, если следует продолжать загрузку при возникновении ошибки
+
+|ImportIntegrationTasksPacket(String) a|
+Выполняет загрузку упакованного _Задания интеграции_, представленного в виде строки.
+
+Параметры:
+
+* data - данные _Задания интеграции_
+
+|ReplicateConfirmedTasks(IReplicationTransfer, Guid) a|
+Выполняет обработку входящий _Заданий интеграции_, формирует пакет подтверждения получения и отправляет ответ серверу-отправителю задания.
+
+Параметры:
+
+* transfer - реализация транспорта, осуществляющего передачу данных
+* forReceiverServerId - идентификатор сервера {dv}, которому предназначается ответ
+
+|ReplicateIntegrationTask(IReplicationTransfer, Guid, CardData, Func<Boolean>) a|
+Выполняет отправку отдельного _Задания интеграции_.
+
+Параметры:
+
+* transfer - реализация транспорта, осуществляющего передачу данных
+* forReceiverServerId - идентификатор удаленного сервера {dv}
+* card - отправляемое Задание интеграции
+* isCancelling - необязательная функция, вызываемая на некоторых этапах обработки Заданий интеграции, которая позволяет прервать выполнение (должна вернуть true)
+
+|ReplicateIntegrationTasks(IReplicationTransfer, Guid) a|
+Выполняет отправку исходящих _Заданий интеграции_.
+
+Параметры:
+
+* transfer - реализация транспорта, осуществляющего передачу данных
+* forReceiverServerId - идентификатор удаленного сервера
+
+|===
+
+== Примеры
+
+[source,pre,codeblock,language-csharp]
+----
+//Создание пользовательской сессии
+SessionManager sessionManager = SessionManager.CreateInstance(dvServerUrl);
+UserSession userSession = sessionManager.CreateSession();
+var sessionContainer = new System.ComponentModel.Design.ServiceContainer();
+sessionContainer.AddService(typeof({dv}.Platform.ObjectManager.UserSession), userSession);
+
+//Инициализация контекста
+ObjectContext objectContext = new ObjectContext(sessionContainer);
+objectContext.AddService<IPersistentStore>({dv}ObjectFactory.CreatePersistentStore(new SessionProvider(userSession), null));
+
+// Получения сервис-реестров
+var serviceFactoryRegistry = objectContext.GetService<IServiceFactoryRegistry>();
+var mapperFactoryRegistry = objectContext.GetService<IObjectMapperFactoryRegistry>();
+
+// Добавления фабрики преобразователей данных МФО
+mapperFactoryRegistry.RegisterFactory(typeof(ReplicationMapperFactory));
+            
+// Добавление фабрики дополнительных сервисов МФО
+serviceFactoryRegistry.RegisterFactory(typeof(ReplicationExtensibilityServiceFactory));
+            
+// Получение сервиса обработки Заданий интеграции
+IReplicationService iReplicationService = objectContext.GetService<IReplicationService>();
+
+// Запуск обработки очереди событий
+iReplicationService.EnqueueEvents();
+----

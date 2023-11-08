@@ -1,0 +1,35 @@
+= LoadingProtocolItem - класс
+
+Представляет запись в протоколе загрузки _Задания интеграции_.
+
+* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
+* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+
+== Синтаксис
+
+[source,pre,codeblock,language-csharp]
+----
+public class LoadingProtocolItem : BaseCardSectionRow
+----
+
+== Свойства
+
+[width="100%",cols="30%,70%",options="header"]
+|===
+|Имя |Описание
+|Description |Задает или возвращает строковое представление статуса или описание ошибки загрузки. Тип System.String.
+|EndTime |Задает или возвращает время окончания обработки. Тип System.DateTime.
+|StartTime |Задает или возвращает время начала обработки. Тип System.DateTime.
+|State |Задает или возвращает статус обработки задания. Тип xref:ReceiverState_EN.adoc[ReceiverState].
+|===
+
+== Поля
+
+[width="100%",cols="30%,70%",options="header"]
+|===
+|Имя |Описание
+|DescriptionProperty |Определяет свойство "Описание". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|EndTimeProperty |Определяет свойство "Время окончания обработки". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|StartTimeProperty |Определяет свойство "Время начала обработки ". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|StateProperty |Определяет свойство "Статус обработки задания". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+|===
