@@ -2,8 +2,8 @@
 
 Класс QueueItem представляет событие в _Очереди событий_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public class QueueItem : ObjectBase, IEventQueueItem
 
 == Свойства
 
-[width="100%",cols="24%,76%",options="header"]
+[cols="24%,76%",options="header"]
 |===
 |Имя |Описание
 |Details |Возвращает дополнительные сведения для обработки события. Тип System.String.
@@ -28,7 +28,7 @@ public class QueueItem : ObjectBase, IEventQueueItem
 
 == Поля
 
-[width="100%",cols="25%,75%",options="header"]
+[cols="25%,75%",options="header"]
 |===
 |Имя |Описание
 |DetailsProperty |Определяет свойство "Детали". Тип {dv}.Platform.ObjectModel.ObjectProperty.

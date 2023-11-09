@@ -2,8 +2,8 @@
 
 Класс [.keyword .apiname]#IntegrationTaskFile# содержит данные файла, приложенного к Заданию интеграции.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -27,7 +27,7 @@ public class IntegrationTaskFile : BaseCardSectionRow
 
 == Поля
 
-[width="100%",cols="26%,74%",options="header"]
+[cols="26%,74%",options="header"]
 |===
 |Имя |Описание
 |CompressedProperty |Определяет свойство "Сжат". Тип {dv}.Platform.ObjectModel.ObjectProperty.

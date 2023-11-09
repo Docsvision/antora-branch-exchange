@@ -2,8 +2,8 @@
 
 Класс FileReplicationTransfer предоставляет метод записи _Задания интеграции_, подготовленного к отправке на удаленный сервер, в файл.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Extensibility.Transfers
-* [.keyword]*Сборка:* `{dv}.Replication.Extensibility.dll`
+* *Пространство имен:* {dv}.Replication.Extensibility.Transfers
+* *Сборка:* `{dv}.Replication.Extensibility.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public class FileReplicationTransfer : IReplicationTransfer
 
 == Конструкторы
 
-[width="100%",cols="34%,66%",options="header"]
+[cols="34%,66%",options="header"]
 |===
 |Имя |Описание
 |FileReplicationTransfer(String, Guid) a|
@@ -29,7 +29,7 @@ public class FileReplicationTransfer : IReplicationTransfer
 
 == Свойства
 
-[width="100%",cols="34%,66%",options="header"]
+[cols="34%,66%",options="header"]
 |===
 |Имя |Описание
 |RemoteServerId |Возвращает идентификатор удаленного сервера. Тип System.Guid.
@@ -37,7 +37,7 @@ public class FileReplicationTransfer : IReplicationTransfer
 
 == Методы
 
-[width="100%",cols="34%,66%",options="header"]
+[cols="34%,66%",options="header"]
 |===
 |Имя |Описание
 |Transfer(String) a|
@@ -55,9 +55,9 @@ public class FileReplicationTransfer : IReplicationTransfer
 
 Итоговый файл будет сформирован по следующему пути `\{basePath}/\{remoteServerId}/\{yyMMddhhmmss}.xml`, где:
 
-* `basePath` – значение параметра `basePath`, переданного в конструктор класса;
-* `remoteServerId` – значение параметра `remoteServerId`, переданного в конструктор класса и приведенного к строковому виду;
-* `yyMMddhhmmss` – текущее время, приведенное к формату "yyMMddhhmmss".
+* `basePath` -- значение параметра `basePath`, переданного в конструктор класса;
+* `remoteServerId` -- значение параметра `remoteServerId`, переданного в конструктор класса и приведенного к строковому виду;
+* `yyMMddhhmmss` -- текущее время, приведенное к формату "yyMMddhhmmss".
 
 == Примеры
 

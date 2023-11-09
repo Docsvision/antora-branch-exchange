@@ -2,8 +2,8 @@
 
 Описывает сигнатуру класса _компонента определения состава передачи_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
-* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+* *Пространство имен:* {dv}.Replication.Interfaces
+* *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public interface IEventResolver
 
 == Методы
 
-[width="100%",cols="35%,65%",options="header"]
+[cols="35%,65%",options="header"]
 |===
 |Имя |Описание
 |ResolveEvent(IExchangeEvent, out Boolean) a|

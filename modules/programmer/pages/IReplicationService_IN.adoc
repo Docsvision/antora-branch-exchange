@@ -2,8 +2,8 @@
 
 Сервис объектной модели библиотеки "Модуль межфилиального обмена", предназначенный для обработки _Заданий интеграции_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
-* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+* *Пространство имен:* {dv}.Replication.Interfaces
+* *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 

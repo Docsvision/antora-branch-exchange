@@ -2,8 +2,8 @@
 
 Интерфейс IExchangeEvent описывает событие межфилиального обмена.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
-* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+* *Пространство имен:* {dv}.Replication.Interfaces
+* *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public interface IExchangeEvent
 
 == Свойства
 
-[width="100%",cols="24%,76%",options="header"]
+[cols="24%,76%",options="header"]
 |===
 |Имя |Описание
 |Cards |Возвращает коллекцию идентификаторов карточек, для которых выполняется перенос данных. Тип System.Collections.Generic.List<System.Guid>.

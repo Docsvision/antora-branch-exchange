@@ -1,4 +1,4 @@
-* xref:topics/IntegrationTask.adoc[Схема карточки "Задание интеграции"]
-* xref:topics/FileDirectory.adoc[Схема карточки "Каталог файлов"]
-* xref:topics/QueueDirectory.adoc[Схема карточки "Очередь событий"]
-* xref:topics/ReplicationSettingsDirectory.adoc[Схема карточки "Справочник настроек МФО"]
+* xref:IntegrationTask.adoc[]
+* xref:FileDirectory.adoc[]
+* xref:QueueDirectory.adoc[]
+* xref:ReplicationSettingsDirectory.adoc[]

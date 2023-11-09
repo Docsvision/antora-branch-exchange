@@ -2,8 +2,8 @@
 
 Класс DirectReplicationTransfer предоставляет методы прямой передачи __Заданий интеграциина удаленный сервер {dv}.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Extensibility.Transfers
-* [.keyword]*Сборка:* `{dv}.Replication.Extensibility.dll`
+* *Пространство имен:* {dv}.Replication.Extensibility.Transfers
+* *Сборка:* `{dv}.Replication.Extensibility.dll`
 
 == Синтаксис
 
@@ -63,7 +63,7 @@ public class DirectReplicationTransfer : IReplicationTransfer
 * data - строка, содержащая XML данные карточки _Задания интеграции_
 
 |TransferIntegrationTask(Guid, String) a|
-Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек – бинарные данные файлов не передаются.
+Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек -- бинарные данные файлов не передаются.
 
 Параметры:
 

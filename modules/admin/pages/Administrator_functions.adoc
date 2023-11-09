@@ -1,6 +1,0 @@
-= Функции администратора
-
-* xref:MfoDictionary.adoc[Справочник настроек МФО]
-* xref:HowNewConfig.adoc[Настройка нового сценария обмена]
-* xref:HowShowList.adoc[Просмотр очереди событий]
-* xref:AfterPlatformUpdate.adoc[Действия после обновления Платформы]

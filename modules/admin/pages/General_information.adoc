@@ -1,4 +1,0 @@
-= Общие сведения
-
-* xref:Purpose_and_function.adoc[Назначение и функции]
-* xref:Required_resources.adoc[Необходимые ресурсы]

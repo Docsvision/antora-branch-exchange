@@ -2,8 +2,8 @@
 
 Определяет статус задания интеграции у _отправителя_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public enum SenderState
 
 == Члены
 
-[width="100%",cols="31%,69%",options="header"]
+[cols="31%,69%",options="header"]
 |===
 |Имя члена |Описание
 |Scheduled |Создано.

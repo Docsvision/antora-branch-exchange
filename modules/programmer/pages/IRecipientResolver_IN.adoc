@@ -2,8 +2,8 @@
 
 Описывает сигнатуру класса _компонента определения адресатов_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
-* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+* *Пространство имен:* {dv}.Replication.Interfaces
+* *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public interface IRecipientResolver
 
 == Методы
 
-[width="100%",cols="32%,68%",options="header"]
+[cols="32%,68%",options="header"]
 |===
 |Имя |Описание
 |ResolveEvent(IExchangeEvent, Boolean) a|

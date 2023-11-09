@@ -2,8 +2,8 @@
 
 Класс ExchangeScenario предоставляет параметры _сценария обмена_, определенного в _Справочнике настроек МФО_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 

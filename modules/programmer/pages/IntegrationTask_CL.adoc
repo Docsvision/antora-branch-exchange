@@ -2,8 +2,8 @@
 
 Класс IntegrationTask представляет объектную модель карточки "Задание интеграции".
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public class IntegrationTask : BaseCard
 
 == Свойства
 
-[width="100%",cols="25%,75%",options="header"]
+[cols="25%,75%",options="header"]
 |===
 |Имя |Описание
 |Files |Возвращает коллекцию файлов, приложенных к Заданию интеграции. Тип ObjectCollection<xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]>.
@@ -32,7 +32,7 @@ public class IntegrationTask : BaseCard
 
 Параметры:
 
-* fileId – идентификатор прикладываемого файла
+* fileId -- идентификатор прикладываемого файла
 
 Тип: xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]
 
@@ -40,7 +40,7 @@ public class IntegrationTask : BaseCard
 
 == Поля
 
-[width="100%",cols="26%,74%",options="header"]
+[cols="26%,74%",options="header"]
 |===
 |Имя |Описание
 |LoadingProtocolProperty |Определяет свойство "Протокол загрузки". Тип {dv}.Platform.ObjectModel.ObjectProperty.

@@ -2,8 +2,8 @@
 
 Представляет запись в протоколе загрузки _Задания интеграции_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public class LoadingProtocolItem : BaseCardSectionRow
 
 == Свойства
 
-[width="100%",cols="30%,70%",options="header"]
+[cols="30%,70%",options="header"]
 |===
 |Имя |Описание
 |Description |Задает или возвращает строковое представление статуса или описание ошибки загрузки. Тип System.String.
@@ -25,7 +25,7 @@ public class LoadingProtocolItem : BaseCardSectionRow
 
 == Поля
 
-[width="100%",cols="30%,70%",options="header"]
+[cols="30%,70%",options="header"]
 |===
 |Имя |Описание
 |DescriptionProperty |Определяет свойство "Описание". Тип {dv}.Platform.ObjectModel.ObjectProperty.

@@ -2,8 +2,8 @@
 
 Описывает сигнатуру класса _компонента выгрузки_, отвечающего за выгрузку данных карточке на стороне _отправителя_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.Interfaces
-* [.keyword]*Сборка:* `{dv}.Replication.Interfaces.dll`
+* *Пространство имен:* {dv}.Replication.Interfaces
+* *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public interface IDataExporter
 
 == Методы
 
-[width="100%",cols="38%,62%",options="header"]
+[cols="38%,62%",options="header"]
 |===
 |Имя |Описание
 |GetCardXml(IExchangeEvent, Stream, out IEnumerable<Guid>, out Boolean) a|
@@ -22,10 +22,10 @@ public interface IDataExporter
 
 Параметры:
 
-* e – данные события обмена
-* writeSteam – поток для записи выгружаемых данных карточек
-* fileIds – идентификаторы выгруженных файлов
-* handled – если флаг установлен в false, то после вызова метода GetCardXml будет выполнена попытка использовать стандартный способ экспорта данных карточки.
+* e -- данные события обмена
+* writeSteam -- поток для записи выгружаемых данных карточек
+* fileIds -- идентификаторы выгруженных файлов
+* handled -- если флаг установлен в false, то после вызова метода GetCardXml будет выполнена попытка использовать стандартный способ экспорта данных карточки.
 
 |===
 

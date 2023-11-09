@@ -2,8 +2,8 @@
 
 Сервис объектной модели библиотеки "Модуль межфилиального обмена", предназначенный для управления _Очередью событий_.
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel.Services
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel.Services
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public interface IEventQueueService
 
 == Методы
 
-[width="100%",cols="41%,59%",options="header"]
+[cols="41%,59%",options="header"]
 |===
 |Имя |Описание
 |ChangeEvent(Guid, QueueItemState, String) a|

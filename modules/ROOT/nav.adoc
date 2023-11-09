@@ -1,0 +1,7 @@
+.Модуль межфилиального обмена
+* xref:index.adoc[]
+** xref:module-structure.adoc[]
+** xref:requirements.adoc[]
+** xref:bp-processing-tasks.adoc[]
+** xref:bp-upload.adoc[]
+** xref:bp-processing-incoming.adoc[]

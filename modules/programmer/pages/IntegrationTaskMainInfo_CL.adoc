@@ -2,8 +2,8 @@
 
 Класс IntegrationTaskMainInfo представляет объектную модель секции "Основная информация" карточки "Задание интеграции".
 
-* [.keyword]*Пространство имен:* {dv}.Replication.ObjectModel
-* [.keyword]*Сборка:* `{dv}.Replication.ObjectModel.dll`
+* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
@@ -14,7 +14,7 @@ public class IntegrationTaskMainInfo : BaseCardSectionRow
 
 == Свойства
 
-[width="100%",cols="28%,72%",options="header"]
+[cols="28%,72%",options="header"]
 |===
 |Имя |Описание
 |EventDateTime |Задает или возвращает время добавления события в _Очередь событий_. Тип System.DateTime.
@@ -30,7 +30,7 @@ public class IntegrationTaskMainInfo : BaseCardSectionRow
 
 == Поля
 
-[width="100%",cols="28%,72%",options="header"]
+[cols="28%,72%",options="header"]
 |===
 |Имя |Описание
 |EventDateTimeProperty |Определяет свойство "Время возникновения события". Тип {dv}.Platform.ObjectModel.ObjectProperty.
