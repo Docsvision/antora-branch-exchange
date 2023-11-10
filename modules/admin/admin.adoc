@@ -1,5 +1,6 @@
 * Администрирование Модуля межфилиального обмена
 ** xref:install.adoc[]
+** xref:update-module.adoc[]
 *** xref:preparation.adoc[]
 **** xref:wf-account-rights.adoc[]
 **** xref:server-directory-settings.adoc[]
