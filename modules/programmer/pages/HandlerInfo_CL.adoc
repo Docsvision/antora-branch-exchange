@@ -1,13 +1,13 @@
-= HandlerInfo - класс
+= HandlerInfo -- класс
 
-Класс HandlerInfo предоставляет описание _компонента обмена_ в _сценарии обмена_.
+Класс `HandlerInfo` предоставляет описание _компонента обмена_ в _сценарии обмена_.
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public class HandlerInfo : IConvertible
 ----
@@ -17,7 +17,8 @@ public class HandlerInfo : IConvertible
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|HandlerInfo() |Инициализирует новый экземпляр класса HandlerInfo.
+
+|`HandlerInfo()` |Инициализирует новый экземпляр класса HandlerInfo.
 |===
 
 == Свойства
@@ -25,7 +26,17 @@ public class HandlerInfo : IConvertible
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|Description |Задает или возвращает описание _компонента обмена_. Тип System.String.
-|Name |Задает или возвращает название _компонента обмена_. Тип System.String.
-|Type |Задает или возвращает полное название класса, реализующего _компонент обмена_. Тип System.String.
+
+|`Description` |Задает или возвращает описание _компонента обмена_.
+
+*Тип*: `System.String`.
+
+|`Name` |Задает или возвращает название _компонента обмена_.
+
+*Тип*: `System.String`.
+
+|`Type` |Задает или возвращает полное название класса, реализующего _компонент обмена_.
+
+*Тип*: `System.String`.
+
 |===

@@ -1,13 +1,13 @@
-= ExchangeScenario - класс
+= ExchangeScenario -- класс
 
-Класс ExchangeScenario предоставляет параметры _сценария обмена_, определенного в _Справочнике настроек МФО_.
+Класс `ExchangeScenario` предоставляет параметры _сценария обмена_, определенного в _Справочнике настроек МФО_.
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public class ExchangeScenario : ObjectBase, IExchangeScenario
 ----
@@ -17,45 +17,46 @@ public class ExchangeScenario : ObjectBase, IExchangeScenario
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|ConflictHandler a|
-Задает или возвращает название класса, реализующего _компонент разрешения конфликтов_. _Не используется в текущей реализации._
 
-Тип: System.String
+|`ConflictHandler`
+a|Задает или возвращает название класса, реализующего _компонент разрешения конфликтов_. _Не используется в текущей реализации._
 
-|ExportDatasetHandler a|
-Задает или возвращает название класса, реализующего _компонент определения состава передачи_.
+*Тип*: `System.String`
 
-Тип: System.String
+|`ExportDatasetHandler`
+a|Задает или возвращает название класса, реализующего _компонент определения состава передачи_.
 
-|ExportHandler a|
-Задает или возвращает название класса, реализующего _компонент выгрузки_.
+*Тип*: `System.String`
 
-Тип: System.String.
+|`ExportHandler`
+a|Задает или возвращает название класса, реализующего _компонент выгрузки_.
 
-|ImportHandler a|
-Задает или возвращает название класса, реализующего _компонент загрузки_.
+*Тип*: `System.String.`
 
-Тип: System.String
+|`ImportHandler`
+a|Задает или возвращает название класса, реализующего _компонент загрузки_.
 
-|Kind a|
-Задает или возвращает идентификатор вида карточки, для которой предназначен данный _сценарий обмена_.
+*Тип*: `System.String`
 
-Тип System.Guid
+|`Kind`
+a|Задает или возвращает идентификатор вида карточки, для которой предназначен данный _сценарий обмена_.
 
-|Name a|
-Задает или возвращает название _сценария обмена_.
+*Тип* `System.Guid`
 
-Тип System.String
+|`Name`
+a|Задает или возвращает название _сценария обмена_.
 
-|PostExportHandler a|
-Задает или возвращает идентификатор бизнес-процесса, который будет запущен на сервере получателя после завершения работы _компонента загрузки_.
+*Тип* `System.String`
 
-Тип System.Guid
+|`PostExportHandler`
+a|Задает или возвращает идентификатор бизнес-процесса, который будет запущен на сервере получателя после завершения работы _компонента загрузки_.
 
-|RecipientsHandler a|
-Задает или возвращает название класса, реализующего _компонент определения адресатов_.
+*Тип* `System.Guid`
 
-Тип System.String
+|`RecipientsHandler`
+a|Задает или возвращает название класса, реализующего _компонент определения адресатов_.
+
+*Тип* `System.String`
 
 |===
 
@@ -64,44 +65,45 @@ public class ExchangeScenario : ObjectBase, IExchangeScenario
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|ConflictHandlerProperty a|
-Определяет свойство "Алгоритм разрешения конфликтов".
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`ConflictHandlerProperty`
+a|Определяет свойство "Алгоритм разрешения конфликтов".
 
-|ExportDatasetHandlerProperty a|
-Определяет свойство "Обработчик определяющий, что выгружать".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`ExportDatasetHandlerProperty`
+a|Определяет свойство "Обработчик определяющий, что выгружать".
 
-|ExportHandlerProperty a|
-Определяет свойство "Обработчик выполняющий выгрузку данных".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`ExportHandlerProperty`
+a|Определяет свойство "Обработчик выполняющий выгрузку данных".
 
-|ImportHandlerProperty a|
-Определяет свойство "Обработчик загрузки данных".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`ImportHandlerProperty`
+a|Определяет свойство "Обработчик загрузки данных".
 
-|KindProperty a|
-Определяет свойство "Вид карточки".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`KindProperty`
+a|Определяет свойство "Вид карточки".
 
-|NameProperty a|
-Определяет свойство "Имя сценария".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`NameProperty`
+a|Определяет свойство "Имя сценария".
 
-|PostExportHandlerProperty a|
-Определяет свойство "Обработчик после выгрузки".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`PostExportHandlerProperty`
+a|Определяет свойство "Обработчик после выгрузки".
 
-|RecipientsHandlerProperty a|
-Определяет свойство "Обработчик вычисления адресатов".
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
-Тип: {dv}.Platform.ObjectModel.ObjectProperty
+|`RecipientsHandlerProperty`
+a|Определяет свойство "Обработчик вычисления адресатов".
+
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`
 
 |===

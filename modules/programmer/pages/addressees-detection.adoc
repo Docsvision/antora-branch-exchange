@@ -1,0 +1,56 @@
+= Разработка компонента определения адресатов
+
+_Компонент определения адресатов_ должен сформировать список идентификаторов серверов {dv}, которым требуется разослать синхронизируемые карточки.
+
+Компонент определения адресатов должен реализовывать интерфейс `xref:IRecipientResolver_IN.adoc[IRecipientResolver]` с единственным методом `ResolveEvent`, при вызове которого переданная в метод переменная `e.Recipients` должна быть заполнена идентификаторами серверов-получателей.
+
+Следующий код демонстрирует пример реализации компонента определения адресатов. Компонент добавляет в список получателей сервер {dv}, на котором зарегистрирован сотрудник, являющийся автором синхронизируемого задания. Пример сценария: задание было изменено (например, выполнено) на удаленном сервере {dv} и данные изменения должны попасть на сервер автора задания.
+
+[source,csharp]
+----
+using Docsvision.Replication.Extensibility;
+using Docsvision.Replication.Interfaces;
+using Docsvision.BackOffice.CardLib.CardDefs;
+using Docsvision.BackOffice.ObjectModel;
+using Docsvision.Platform.ObjectManager;
+using System;
+
+namespace Replication.Demo
+{
+
+ [ResName("Пример. Определение адресатов")] <.>
+ public class RecipientResolver : BaseHandler, IRecipientResolver
+ {
+
+  public void ResolveEvent(IExchangeEvent e, out bool cancel) <.>
+  {
+
+   var task = Context.GetObject<Task>(e.ObjectId); <.>
+
+   CardData refStaff = UserSession.CardManager.GetDictionaryData(RefStaff.ID); <.>
+
+   RowData rowRefStaff = refStaff.Sections[RefStaff.Employees.ID].GetRow(Context.GetObjectRef(task.MainInfo.Author).Id); <.>
+
+   Guid ownServerID = rowRefStaff.GetGuid("OwnServerID") ?? Guid.Empty; <.>
+
+   Guid currentServerId = new Guid((base.UserSession.Properties["ServerID"].Value as string)); <.>
+
+   cancel = (ownServerID = Guid.Empty || ownServerID = currentServerId); <.>
+            
+   if (!cancel)
+   {
+    e.Recipients.Add(ownServerID); <.>
+   }
+  }
+ }
+}
+----
+<.> Описание, переданное в `DescriptionAttribute`, будет выводиться в выпадающем списке Справочника настроек МФО
+<.> Параметр `e` содержит данные добавляемого события. Параметр `cancel` определяет необходимость остановки дальнейшей обработки события обмена. Установите `cancel` в значение `true`, чтобы событие обмена дальше не обрабатывалось
+<.> Получение из события обмена идентификатора карточки, из которой вызвано событие. В данном случае, это карточка _Задание_.
+<.> Получение Справочника сотрудников.
+<.> Получение идентификатора сотрудника, являющегося автором задания.
+<.> Получение идентификатора сервера-владельца записи сотрудника.
+<.> Получение идентификатора текущего сервера, чтобы убедиться, что автор задания не зарегистрирован на текущем сервере. Если сотрудник зарегистрирован, межфилиальный обмен не потребуется.
+<.> Если сервер получателя не определен, либо совпадает с текущим, обработка будет прервана.
+<.> Добавляем идентификатор сервера-владельца записи сотрудника.

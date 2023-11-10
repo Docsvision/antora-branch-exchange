@@ -1,26 +1,39 @@
-= ReceiverState - перечисление
+= ReceiverState -- перечисление
 
 Определяет статус задания интеграции у _получателя_.
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public enum ReceiverState
 ----
 
 == Члены
 
-[cols="29%,71%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя члена |Описание
-|Recieved |Получено.
-|InWork |Обрабатывается загрузчиком.
-|Locked |Обработка остановлена из-за блокировки.
-|Handled |Успешно обработано загрузчиком.
-|Error |При обработке произошла ошибка.
-|Receiving |Принимается.
+
+|`Recieved`
+|Получено.
+
+|`InWork`
+|Обрабатывается загрузчиком.
+
+|`Locked`
+|Обработка остановлена из-за блокировки.
+
+|`Handled`
+|Успешно обработано загрузчиком.
+
+|`Error`
+|При обработке произошла ошибка.
+
+|`Receiving`
+|Принимается.
+
 |===

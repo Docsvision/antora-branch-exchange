@@ -1,28 +1,53 @@
-= IExchangeEvent - интерфейс
+= IExchangeEvent -- интерфейс
 
-Интерфейс IExchangeEvent описывает событие межфилиального обмена.
+Интерфейс `IExchangeEvent` описывает событие межфилиального обмена.
 
-* *Пространство имен:* {dv}.Replication.Interfaces
+* *Пространство имён:* `{dv}.Replication.Interfaces`
 * *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public interface IExchangeEvent
 ----
 
 == Свойства
 
-[cols="24%,76%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|Cards |Возвращает коллекцию идентификаторов карточек, для которых выполняется перенос данных. Тип System.Collections.Generic.List<System.Guid>.
-|Details |Возвращает дополнительные сведения. Тип System.String.
-|EventDateTime |Возвращает дату создания события. Тип System.DateTime.
-|EventId |Возвращает идентификатор события. Тип System.Guid.
-|EventTypeId |Возвращает идентификатор типа события, определенного в _Справочнике настроек МФО_. Тип System.Guid.
-|ExtendedData |Возвращает дополнительные сведения. Тип System.String.
-|ObjectId |Возвращает идентификатор объекта создавшего событие. Тип System.Guid.
-|Recipients |Возвращает коллекцию идентификаторов _получателей_ события. Тип System.Collections.Generic.List<System.Guid>.
+
+|`Cards` |Возвращает коллекцию идентификаторов карточек, для которых выполняется перенос данных.
+
+*Тип*: `System.Collections.Generic.List<System.Guid>`.
+
+|`Details` |Возвращает дополнительные сведения.
+
+*Тип*: `System.String`.
+
+|`EventDateTime` |Возвращает дату создания события.
+
+*Тип*: `System.DateTime`.
+
+|`EventId` |Возвращает идентификатор события.
+
+*Тип*: `System.Guid`.
+
+|`EventTypeId` |Возвращает идентификатор типа события, определенного в _Справочнике настроек МФО_.
+
+*Тип*: `System.Guid`.
+
+|`ExtendedData` |Возвращает дополнительные сведения.
+
+*Тип*: `System.String`.
+
+|`ObjectId` |Возвращает идентификатор объекта создавшего событие.
+
+*Тип*: `System.Guid`.
+
+|`Recipients` |Возвращает коллекцию идентификаторов _получателей_ события.
+
+*Тип*: `System.Collections.Generic.List<System.Guid>`.
+
 |===

@@ -1,0 +1,73 @@
+= Разработка компонента выгрузки
+
+_Компонент выгрузки_ должен выгрузить в поток данные карточек, список которых предоставит _компонентов определения состава передачи_.
+
+Программный класс _компонента выгрузки_ должен реализовывать интерфейс `xref:IDataExporter_IN.adoc[IDataExporter]` с единственным методом `GetCardXml`. Данный метод должен сохранить в поток `writeSteam` данные выгружаемых карточек и сохранить в объект `fileIds` идентификаторы выгруженных файлов карточек.
+
+Следующий код демонстрирует пример реализации _компонента выгрузки_, в котором в пакет выгружаемых данных будут включены данные карточек и атрибуты файлов карточек без бинарных данных.
+
+[source,csharp]
+----
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using Docsvision.Platform.ObjectManager;
+using Docsvision.Platform.ObjectManager.Metadata;
+using Docsvision.Platform.ObjectManager.SearchModel;
+using Docsvision.Replication.Interfaces;
+
+namespace Replication.Demo
+{
+    [ResName("Пример. Выгрузка")]
+    public class DataExporter : BaseHandler, IDataExporter <.>
+    {
+        public virtual void GetCardXml(IExchangeEvent e, Stream writeSteam, out IEnumerable<Guid> fileIds, out bool handled)
+        {
+            handled = true; <.>
+
+            ExportFlags flags = ExportFlags.ChildSections | ExportFlags.ChildRows | ExportFlags.LinkedFiles | ExportFlags.LinkedFilesNoData; <.>
+
+            var inspector = new ExportCardDemoInspector(UserSession); <.>
+
+            CardData cardData = UserSession.CardManager.GetCardData(e.Cards.First()); <.>
+
+            cardData.SaveXml(writeStream, flags, inspector); <.>
+            writeStream.Flush();
+
+            fileIds = inspector.FileIds; <.>
+        }
+    }
+
+    public class ExportCardDemoInspector : ExportCardInspector <.>
+    {
+        private List<Guid> fileIds = new List<Guid>();
+
+        public ExportCardDemoInspector(UserSession session): base(session) {    }
+
+        public override void AfterExportFile(FileData fileData)
+        {
+            base.AfterExportFile(fileData);
+            fileIds.Add(fileData.Id);
+        }
+
+        public IEnumerable<Guid> FileIds <.>
+        {
+            get
+            {
+                return fileIds;
+            }
+        }
+    }
+}
+----
+<.> Описание, переданное в `DescriptionAttribute`, будет выводиться в выпадающем списке Справочника настроек МФО.
+<.> Установка флага, предотвращающего повторную выгрузку данных
+<.> Формируются набор флагов экспорта данных: будут выгружены только данные карточек и атрибуты файлов, бинарные данные файлов выгружаться не будут. Бинарные данные планируется передавать методом `TransferIntegrationTaskFile` класса, реализующего транспорт к удаленному серверу {dv}.
+<.> Инициализация инспектора выгрузки, формирующего список идентификаторов файлов, атрибуты которых попали в выгрузку.
+<.> Для примера, будут выгружены данные только первой карточки из списка карточек, сформированного на этапе определения состава передачи.
+<.> Выгрузка данных в поток.
+<.> Передача списка идентификаторов файлов, атрибуты которых были добавлены в выгрузку.
+<.> Собственный класс инспектора экспорта данных, с возможностью получения списка идентификаторов файлов, которые были выгружены.
+<.> Идентификаторы выгруженных файлов.

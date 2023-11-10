@@ -21,12 +21,12 @@
 |Kind |Вид карточки |refid | |
 |RecipientsHandler |Обработчик вычисления адресатов |unistring |2048 |
 |ExportHandler |Обработчик выполняющий выгрузку данных |unistring |2048 |
-|PostExportHandler |Действие пост-обработки |refcardid | a|
-**Идентификатор типа:**AE82DD57-348C-4407-A50A-9F2C7D694DA8
+|PostExportHandler |Действие пост-обработки |refcardid |
+a|*Идентификатор типа*: AE82DD57-348C-4407-A50A-9F2C7D694DA8
 
-**Идентификатор секции:**0EF6BCCA-7A09-4027-A3A2-D2EEECA1BF4D
+*Идентификатор секции*: 0EF6BCCA-7A09-4027-A3A2-D2EEECA1BF4D
 
 |ImportHandler |Обработчик загрузки данных |unistring |2048 |
 |ConflictHandler |Алгоритм разрешения конфликтов |unistring |2048 |
-|ExportDatasetHandler |Обработчик определяющий что выгружать |unistring |2048 |
+|ExportDatasetHandler |Обработчик, определяющий, что выгружать |unistring |2048 |
 |===

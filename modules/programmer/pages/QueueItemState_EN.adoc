@@ -1,24 +1,33 @@
-= QueueItemState - перечисление
+= QueueItemState -- перечисление
 
 Определяет возможные состояния обработки события межсерверного обмена данными.
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public enum QueueItemState
 ----
 
 == Члены
 
-[cols="28%,72%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя члена |Описание
-|Unhandled |Событие считается необработанным. Устанавливается для созданных событий.
-|Handled |Обработано
-|Error |При обработке возникли ошибки.
-|Cancelled |Было отменено.
+
+|`Unhandled`
+|Событие считается необработанным. Устанавливается для созданных событий.
+
+|`Handled`
+|Обработано
+
+|`Error`
+|При обработке возникли ошибки.
+
+|`Cancelled`
+|Было отменено.
+
 |===

@@ -1,32 +1,32 @@
-= IRecipientResolver - интерфейс
+= IRecipientResolver -- интерфейс
 
 Описывает сигнатуру класса _компонента определения адресатов_.
 
-* *Пространство имен:* {dv}.Replication.Interfaces
+* *Пространство имён:* `{dv}.Replication.Interfaces`
 * *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public interface IRecipientResolver
 ----
 
 == Методы
 
-[cols="32%,68%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|ResolveEvent(IExchangeEvent, Boolean) a|
-При переопределении в производном классе формирует список из идентификаторов серверов _получателей_.
 
-Параметры:
+|`ResolveEvent(IExchangeEvent, Boolean)`
+a|При переопределении в производном классе формирует список из идентификаторов серверов _получателей_.
 
-* e - событие обмена
-* cancel - возвращает true, если выгрузка не требуется
+.Параметры:
+* `e` -- событие обмена
+* `cancel` -- возвращает `true`, если выгрузка не требуется
 
 |===
 
 == Заметки
 
-Пример реализации смотрите в разделе xref:UseAPIRecipientResolver.adoc[Разработка компонента определения адресатов].
+Пример реализации смотрите в разделе xref:addressees-detection.adoc[Разработка компонента определения адресатов].

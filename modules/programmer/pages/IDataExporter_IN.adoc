@@ -1,27 +1,27 @@
-= IDataExporter - интерфейс
+= IDataExporter -- интерфейс
 
 Описывает сигнатуру класса _компонента выгрузки_, отвечающего за выгрузку данных карточке на стороне _отправителя_.
 
-* *Пространство имен:* {dv}.Replication.Interfaces
+* *Пространство имён:* `{dv}.Replication.Interfaces`
 * *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public interface IDataExporter
 ----
 
 == Методы
 
-[cols="38%,62%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|GetCardXml(IExchangeEvent, Stream, out IEnumerable<Guid>, out Boolean) a|
-При переопределении в производном классе сохраняет данные передаваемой на удаленный сервер {dv} карточки в поток.
 
-Параметры:
+|GetCardXml(IExchangeEvent, Stream, out IEnumerable<Guid>, out Boolean)
+a|При переопределении в производном классе сохраняет данные передаваемой на удаленный сервер {dv} карточки в поток.
 
+.Параметры:
 * e -- данные события обмена
 * writeSteam -- поток для записи выгружаемых данных карточек
 * fileIds -- идентификаторы выгруженных файлов
@@ -31,4 +31,4 @@ public interface IDataExporter
 
 == Заметки
 
-Пример реализации смотрите в разделе xref:UseAPIDataExporter.adoc[Разработка компонента выгрузки].
+Пример реализации смотрите в разделе xref:export-component.adoc[Разработка компонента выгрузки].

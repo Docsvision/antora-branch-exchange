@@ -1,32 +1,32 @@
-= IEventResolver - интерфейс
+= IEventResolver -- интерфейс
 
 Описывает сигнатуру класса _компонента определения состава передачи_.
 
-* *Пространство имен:* {dv}.Replication.Interfaces
+* *Пространство имён:* `{dv}.Replication.Interfaces`
 * *Сборка:* `{dv}.Replication.Interfaces.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public interface IEventResolver
 ----
 
 == Методы
 
-[cols="35%,65%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|ResolveEvent(IExchangeEvent, out Boolean) a|
-При переопределении в производном классе, позволяет определить состав данных, передаваемых на удаленный сервер.
 
-Параметры:
+|`ResolveEvent(IExchangeEvent, out Boolean)`
+a|При переопределении в производном классе, позволяет определить состав данных, передаваемых на удаленный сервер.
 
-* e - событие обмена
-* cancel - возвращает true, если выгрузка не требуется
+.Параметры:
+* `e` -- событие обмена
+* `cancel` -- возвращает `true`, если выгрузка не требуется
 
 |===
 
 == Заметки
 
-Пример реализации смотрите в разделе xref:UseAPIEventResolver.adoc[Разработка компонента определения состава передачи].
+Пример реализации смотрите в разделе xref:event-resolver.adoc[Разработка компонента определения состава передачи].

@@ -1,0 +1,52 @@
+= Разработка компонента загрузки
+
+Компонент загрузки должен обработать полученные _Задания интеграции_ и загрузить переданные с ними данные карточек в БД.
+
+Программный класс _компонента загрузки_ должен реализовывать интерфейс `xref:IDataImporter_IN.adoc[IDataImporter]` с двумя методами: `CanImportData` и `ImportData`. Первый метод должен проверить карточки и файлы на возможность импорта, второй -- загрузить данные в базу данных.
+
+Следующий код демонстрирует пример реализации _компонента загрузки_, в котором карточки загружаются, если не были загружены ранее.
+
+[source,csharp]
+----
+using Docsvision.Replication.Extensibility;
+using Docsvision.Replication.Interfaces;
+using Docsvision.Platform.ObjectManager;
+using System.IO;
+
+namespace Replication.Demo
+{
+
+ [ResName("Пример. Загрузка")]
+ public class DataImporter : BaseHandler, IDataImporter <.>
+ {
+    public bool CanImportData(IIntegrationTask task, string data, IEnumerable<Guid> fileIds, out IEnumerable<Guid> filteredFileIds) <.>
+    {
+        filteredFileIds = fileIds; <.>
+
+        CardData cardData = base.UserSession.CardManager.GetCardData(task.ObjectId); <.>
+
+        if (cardData != null) <.>
+            return false;
+
+        return true;
+    }
+
+    public void ImportData(IIntegrationTask task, string data) <.>
+    {
+        using (MemoryStream memoryStream = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(Data)))
+        {
+            memoryStream.Position = 0L;
+
+            UserSession.CardManager.ImportCards(memoryStream); <.>
+        }
+    }
+  }
+}
+----
+<.> Описание, переданное в `DescriptionAttribute`, будет выводиться в выпадающем списке Справочника настроек МФО.
+<.> Проверяем, что карточка, которая вызвала событие обмена, не существует в базе данных. Разрешаем загрузку всех файлов карточек.
+<.> По умолчанию, все файлы могут быть загружены.
+<.> Пытаемся получить карточку в текущей системе по `ObjectId`.
+<.> Если у Получателя карточка уже существует, то загрузка невозможна.
+<.> Загрузка данных.
+<.> Импорт карточек.

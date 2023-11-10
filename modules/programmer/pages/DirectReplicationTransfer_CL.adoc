@@ -1,13 +1,13 @@
-= DirectReplicationTransfer - класс
+= DirectReplicationTransfer -- класс
 
-Класс DirectReplicationTransfer предоставляет методы прямой передачи __Заданий интеграциина удаленный сервер {dv}.
+Класс `DirectReplicationTransfer` предоставляет методы прямой передачи _Заданий интеграции_ на удаленный сервер {dv}.
 
-* *Пространство имен:* {dv}.Replication.Extensibility.Transfers
+* *Пространство имён:* {dv}.Replication.Extensibility.Transfers
 * *Сборка:* `{dv}.Replication.Extensibility.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public class DirectReplicationTransfer : IReplicationTransfer
 ----
@@ -17,13 +17,13 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|DirectReplicationTransfer(ObjectContext, Guid) a|
-Инициализирует новый экземпляр класса [.keyword .apiname]#DirectReplicationTransfer#.
 
-Параметры:
+|``DirectReplicationTransfer(ObjectContext, Guid) ``
+a|Инициализирует новый экземпляр класса `DirectReplicationTransfer`.
 
-* context - контекст объектов
-* remoteServerId - идентификатор удаленного сервера
+.Параметры:
+* `context` -- контекст объектов
+* `remoteServerId` -- идентификатор удаленного сервера
 
 |===
 
@@ -32,20 +32,21 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|Context a|
-Возвращает контекст объектов.
 
-Тип: {dv}.Platform.ObjectModel.ObjectContext
+|`Context`
+a|Возвращает контекст объектов.
 
-|RemoteServer a|
-Возвращает объектную модель карточки сервера, являющегося _получателем_.
+*Тип*: `{dv}.Platform.ObjectModel.ObjectContext`
 
-Тип: {dv}.BackOffice.ObjectModel.ServersServer
+|`RemoteServer`
+a|Возвращает объектную модель карточки сервера, являющегося _получателем_.
 
-|RemoteServerId a|
-Возвращает идентификатор удаленного сервера.
+*Тип*: `{dv}.BackOffice.ObjectModel.ServersServer`
 
-Тип: System.Guid
+|`RemoteServerId`
+a|Возвращает идентификатор удаленного сервера.
+
+*Тип*: `System.Guid`
 
 |===
 
@@ -54,35 +55,33 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|FinishTransfer(Guid) |Устанавливает на удаленном сервере {dv} состояние _Задания интеграции_ в значение "Получено".
-|Transfer(String) a|
-Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
 
-Параметры:
+|`FinishTransfer(Guid)` |Устанавливает на удаленном сервере {dv} состояние _Задания интеграции_ в значение "Получено".
+|`Transfer(String)`
+a|Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
 
-* data - строка, содержащая XML данные карточки _Задания интеграции_
+.Параметры:
+* `data` -- строка, содержащая XML данные карточки _Задания интеграции_.
 
-|TransferIntegrationTask(Guid, String) a|
-Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек -- бинарные данные файлов не передаются.
+|`TransferIntegrationTask(Guid, String)`
+a|Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек и атрибуты файлов карточек -- бинарные данные файлов не передаются.
 
-Параметры:
+.Параметры:
+* `taskId` -- идентификатор карточки Задания интеграции.
+* `data` -- строка, содержащая XML данные карточки _Задания интеграции_.
 
-* taskId - идентификатор карточки Задания интеграции
-* data - строка, содержащая XML данные карточки _Задания интеграции_
+|`TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean)`
+a|Передает на удаленный сервер {dv} бинарные данные файлов, атрибуты которых переданы методом `TransferIntegrationTask`.
 
-|TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean) a|
-Передает на удаленный сервер {dv} бинарные данные файлов, атрибуты которых переданы методом TransferIntegrationTask.
+.Параметры:
+* `taskId` -- идентификатор Задания интеграции.
+* `originalFileId` -- идентификатор передаваемого файла.
+* `fileData` -- данные файла.
+* `compressed` -- признак использования сжатия файлов при передаче. _Не используется в текущей реализации._
 
-Параметры:
+*Тип*: `{dv}.Replication.Interfaces.FileState`
 
-* taskId - идентификатор Задания интеграции
-* originalFileId - идентификатор передаваемого файла
-* fileData - данные файла
-* compressed - признак использования сжатия файлов при передаче. _Не используется в текущей реализации._
-
-Тип: {dv}.Replication.Interfaces.FileState
-
-Статус передачи файла на удаленный сервер
+Статус передачи файла на удаленный сервер.
 
 |===
 
@@ -91,8 +90,10 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|CreateRemoteSessionDelegate |Представляет метод для получения сессии к удаленному серверу {dv}. Может быть использован для реализации нестандартного способа подключения.
-|ReconnectionErrorHandler(ReconnectionEventArgs) |Представляет метод обработки события OnReconnectionError.
+
+|`CreateRemoteSessionDelegate` |Представляет метод для получения сессии к удаленному серверу {dv}. Может быть использован для реализации нестандартного способа подключения.
+
+|`ReconnectionErrorHandler(ReconnectionEventArgs)` |Представляет метод обработки события `OnReconnectionError`.
 |===
 
 == События
@@ -100,7 +101,10 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|OnReconnectionError |Представляет метод обработки ошибки соединения с удаленным сервером. Тип DirectReplicationTransfer. ReconnectionErrorHandler.
+
+|`OnReconnectionError` |Представляет метод обработки ошибки соединения с удаленным сервером.
+
+*Тип*: `DirectReplicationTransfer.ReconnectionErrorHandler`.
 |===
 
 == Поля
@@ -108,23 +112,24 @@ public class DirectReplicationTransfer : IReplicationTransfer
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|ReconnectionRepeats a|
-Количество попыток соединения с сервером _получателя_ при его недоступности.
 
-Тип: System.Int32
+|`ReconnectionRepeats`
+a|Количество попыток соединения с сервером _получателя_ при его недоступности.
 
-|ReconnectionTimout a|
-Время (в миллисекундах) задержки между попытками соединиться с недоступным сервером.
+*Тип*: `System.Int32`
 
-Тип: System.Int32
+|`ReconnectionTimout`
+a|Время (в миллисекундах) задержки между попытками соединиться с недоступным сервером.
 
-|RemoteSessionCreator a|
-Представляет метод выполняющий открытие подключения к удаленному серверу {dv} (_получателю_).
+*Тип*: `System.Int32`
 
-Тип: DirectReplicationTransfer. CreateRemoteSessionDelegate.
+|`RemoteSessionCreator`
+a|Представляет метод выполняющий открытие подключения к удаленному серверу {dv} (_получателю_).
+
+*Тип*: `DirectReplicationTransfer.CreateRemoteSessionDelegate`.
 
 |===
 
 == Заметки
 
-Пара методов [.keyword .apiname]#TransferIntegrationTask# и [.keyword .apiname]#TransferIntegrationTaskFile# (должны использоваться совместно) позволяет передавать "тяжелые" данные файлов и более легкие данные карточек в разных пакетах. Метод [.keyword .apiname]#Transfer# передает данные карточек и файлы в одном пакете.
+Пара методов `TransferIntegrationTask` и `TransferIntegrationTaskFile` (должны использоваться совместно) позволяет передавать "тяжелые" данные файлов и более легкие данные карточек в разных пакетах. Метод `Transfer` передает данные карточек и файлы в одном пакете.

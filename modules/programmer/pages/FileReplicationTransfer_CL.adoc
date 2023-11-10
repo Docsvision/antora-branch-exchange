@@ -1,54 +1,62 @@
-= FileReplicationTransfer - класс
+= FileReplicationTransfer -- класс
 
-Класс FileReplicationTransfer предоставляет метод записи _Задания интеграции_, подготовленного к отправке на удаленный сервер, в файл.
+Класс `FileReplicationTransfer` предоставляет метод записи _Задания интеграции_, подготовленного к отправке на удаленный сервер, в файл.
 
-* *Пространство имен:* {dv}.Replication.Extensibility.Transfers
+* *Пространство имён:* `{dv}.Replication.Extensibility.Transfers`
 * *Сборка:* `{dv}.Replication.Extensibility.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public class FileReplicationTransfer : IReplicationTransfer
 ----
 
 == Конструкторы
 
-[cols="34%,66%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|FileReplicationTransfer(String, Guid) a|
-Инициализирует новый экземпляр класса FileReplicationTransfer.
 
-Параметры:
+|`FileReplicationTransfer(String, Guid)`
+a|Инициализирует новый экземпляр класса `FileReplicationTransfer`.
 
-* basePath - полный путь для выгрузки файла
-* remoteServerId - идентификатор удаленного сервера
+.Параметры:
+* `basePath` -- полный путь для выгрузки файла
+* `remoteServerId` -- идентификатор удаленного сервера
 
 |===
 
 == Свойства
 
-[cols="34%,66%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|RemoteServerId |Возвращает идентификатор удаленного сервера. Тип System.Guid.
+
+|`RemoteServerId` |Возвращает идентификатор удаленного сервера.
+
+*Тип*: `System.Guid`.
+
 |===
 
 == Методы
 
-[cols="34%,66%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|Transfer(String) a|
-Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
 
-Параметры:
+|`Transfer(String)`
+a|Передает на удаленный сервер {dv} _Задание интеграции_, содержащее данные карточек, атрибуты файлов карточек и бинарные данные файлов.
 
-* data - строка, содержащая XML данные карточки _Задания интеграции_
+.Параметры:
+* `data` -- строка, содержащая XML данные карточки _Задания интеграции_
 
-|TransferIntegrationTask(Guid, String) |_Не используется в текущей реализации. При попытке обращения будет возвращено исключение._
-|TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean) |_Не используется в текущей реализации. При попытке обращения будет возвращено исключение._
+|`TransferIntegrationTask(Guid, String)`
+|_Не используется в текущей реализации. При попытке обращения будет возвращено исключение._
+
+|`TransferIntegrationTaskFile(Guid, Guid, FileData, ref Boolean)`
+|_Не используется в текущей реализации. При попытке обращения будет возвращено исключение._
+
 |===
 
 == Заметки
@@ -57,40 +65,39 @@ public class FileReplicationTransfer : IReplicationTransfer
 
 * `basePath` -- значение параметра `basePath`, переданного в конструктор класса;
 * `remoteServerId` -- значение параметра `remoteServerId`, переданного в конструктор класса и приведенного к строковому виду;
-* `yyMMddhhmmss` -- текущее время, приведенное к формату "yyMMddhhmmss".
+* `yyMMddhhmmss` -- текущее время, приведенное к формату `yyMMddhhmmss`.
 
 == Примеры
 
 Далее приведена часть бизнес-процесса "Выгрузка данных удаленному серверу XX", который отвечает за передачу _Задания интеграции_ удаленному серверу. Данный экземпляр бизнес-процесса выполняет запись заданий в папку `Z:\Export` (полный путь будет сформирован по правилу, описанному выше). Предполагается, что _получатель_ самостоятельно запросит содержимое нужной папки и выполнит обработку имеющихся там _Заданий интеграции_.
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
-/*
- Начало скрипта бизнес-процесса "Выгрузка данных удаленному серверу XX" совпадает с шаблоном "Выгрузка данных удаленному серверу"
-*/
+<.>
 
-// Получение сервиса репликации
-IReplicationLibService replicationLibService = Context.GetService<IReplicationLibService>();
+IReplicationLibService replicationLibService = Context.GetService<IReplicationLibService>(); <.>
 
-// Инициализация класса, отвечающего за передачу Задания интеграции. remoteServerID - идентификатор удаленного сервера (получен из параметров бизнес процесса)
-FileReplicationTransfer transfer = new FileReplicationTransfer(@"z:\export", remoteServerID);
+FileReplicationTransfer transfer = new FileReplicationTransfer(@"z:\export", remoteServerID); <.>
 
-// Выполнение передачи задания           
-replicationLibService.ReplicateIntegrationTasks(transfer, remoteServerID);
+replicationLibService.ReplicateIntegrationTasks(transfer, remoteServerID); <.>
 ----
+<.> Начало скрипта бизнес-процесса _Выгрузка данных удаленному серверу XX_ совпадает с шаблоном _Выгрузка данных удаленному серверу_.
+<.> Получение сервиса репликации.
+<.> Инициализация класса, отвечающего за передачу _Задания интеграции_. `remoteServerID` -- идентификатор удаленного сервера, полученный из параметров бизнес процесса.
+<.> Выполнение передачи задания.
 
 На стороне _получателя_ необходимо осуществить загрузку заданий из папки, в которую осуществляется сброс _Заданий интеграции_. В простейшем случае код бизнес-процесса, осуществляющего загрузку одного задания будет выглядеть следующим образом:
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 using System;
 using System.Xml;
 
-using {dv}.Workflow.Objects;
-using {dv}.Workflow.Runtime;
-using {dv}.Workflow.Gates;
-using {dv}.Platform.HelperAPI;
-using {dv}.Platform.ObjectManager;
+using Docsvision.Workflow.Objects;
+using Docsvision.Workflow.Runtime;
+using Docsvision.Workflow.Gates;
+using Docsvision.Platform.HelperAPI;
+using Docsvision.Platform.ObjectManager;
 
 namespace DVScriptHost
 {
@@ -99,14 +106,14 @@ namespace DVScriptHost
   public void Execute (ProcessInfo process, PassState passInfo)
   {
 
-   // Путь к файлу, содержащему выгрузку карточки Задание интеграции. 313f9565-c312-47fb-bf6f-b35d9e2949e9 - идентификатор сервера получателя
-   string data = System.IO.File.ReadAllText(@"z:\export\{313f9565-c312-47fb-bf6f-b35d9e2949e9}\141014031005.xml");
+   string data = System.IO.File.ReadAllText(@"z:\export\{313f9565-c312-47fb-bf6f-b35d9e2949e9}\141014031005.xml"); <.>
    
-   // Вызов серверного метода, выполняющего загрузку Заданий интеграции
-   ExtensionMethod extensionMethod = process.Session.ExtensionManager.GetExtensionMethod("ReplicationServerExtension", "ImportIntegrationTasks");
+   ExtensionMethod extensionMethod = process.Session.ExtensionManager.GetExtensionMethod("ReplicationServerExtension", "ImportIntegrationTasks"); <.>
    extensionMethod.Parameters.AddNew("data", ParameterValueType.String, data);
    extensionMethod.Execute();
   }
  }
 }
 ----
+<.> Путь к файлу, содержащему выгрузку карточки _Задание интеграции_. `313f9565-c312-47fb-bf6f-b35d9e2949e9` -- идентификатор сервера получателя.
+<.> Вызов серверного метода, выполняющего загрузку _Заданий интеграции_.

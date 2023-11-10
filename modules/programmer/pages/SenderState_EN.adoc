@@ -1,24 +1,33 @@
-= SenderState - перечисление
+= SenderState -- перечисление
 
 Определяет статус задания интеграции у _отправителя_.
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public enum SenderState
 ----
 
 == Члены
 
-[cols="31%,69%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя члена |Описание
-|Scheduled |Создано.
-|Sent |Отправлено.
-|Confirmed |Подтверждено.
-|Sending |Передается.
+
+|`Scheduled`
+|Создано.
+
+|`Sent`
+|Отправлено.
+
+|`Confirmed`
+|Подтверждено.
+
+|`Sending`
+|Передается.
+
 |===

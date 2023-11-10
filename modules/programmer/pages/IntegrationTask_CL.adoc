@@ -1,25 +1,36 @@
-= IntegrationTask - класс
+= IntegrationTask -- класс
 
-Класс IntegrationTask представляет объектную модель карточки "Задание интеграции".
+Класс `IntegrationTask` представляет объектную модель карточки "Задание интеграции".
 
-* *Пространство имен:* {dv}.Replication.ObjectModel
+* *Пространство имён:* `{dv}.Replication.ObjectModel`
 * *Сборка:* `{dv}.Replication.ObjectModel.dll`
 
 == Синтаксис
 
-[source,pre,codeblock,language-csharp]
+[source,csharp]
 ----
 public class IntegrationTask : BaseCard
 ----
 
 == Свойства
 
-[cols="25%,75%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|Files |Возвращает коллекцию файлов, приложенных к Заданию интеграции. Тип ObjectCollection<xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]>.
-|LoadingProtocol |Возвращает протокол загрузки события на стороне _получателя_. Тип ObjectCollection<xref:LoadingProtocolItem_CL.adoc[LoadingProtocolItem]>.
-|MainInfo |Возвращает основную информацию о карточке. Тип xref:IntegrationTaskMainInfo_CL.adoc[IntegrationTaskMainInfo].
+
+|`Files` |Возвращает коллекцию файлов, приложенных к Заданию интеграции.
+
+*Тип*: `ObjectCollection<xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]>`.
+
+|`LoadingProtocol`
+|Возвращает протокол загрузки события на стороне _получателя_.
+
+*Тип*: `ObjectCollection<xref:LoadingProtocolItem_CL.adoc[LoadingProtocolItem]>`.
+
+|`MainInfo` |Возвращает основную информацию о карточке.
+
+*Тип*: `xref:IntegrationTaskMainInfo_CL.adoc[IntegrationTaskMainInfo]`.
+
 |===
 
 == Методы
@@ -27,22 +38,32 @@ public class IntegrationTask : BaseCard
 [cols=",",options="header"]
 |===
 |Имя |Описание
-|AddFile(Guid) a|
-Добавляет в карточку файл с указанным идентификатором.
 
-Параметры:
+|`AddFile(Guid)`
 
-* fileId -- идентификатор прикладываемого файла
+a|Добавляет в карточку файл с указанным идентификатором.
 
-Тип: xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]
+.Параметры:
+* `fileId` -- идентификатор прикладываемого файла
+
+Тип: `xref:IntegrationTaskFile_CL.adoc[IntegrationTaskFile]`
 
 |===
 
 == Поля
 
-[cols="26%,74%",options="header"]
+[cols="40%,60%",options="header"]
 |===
 |Имя |Описание
-|LoadingProtocolProperty |Определяет свойство "Протокол загрузки". Тип {dv}.Platform.ObjectModel.ObjectProperty.
-|MainInfoProperty |Определяет свойство "Основная информация". Тип {dv}.Platform.ObjectModel.ObjectProperty.
+
+|`LoadingProtocolProperty`
+|Определяет свойство "Протокол загрузки".
+
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`.
+
+|`MainInfoProperty`
+|Определяет свойство "Основная информация".
+
+*Тип*: `{dv}.Platform.ObjectModel.ObjectProperty`.
+
 |===
