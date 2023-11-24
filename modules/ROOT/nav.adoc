@@ -1,4 +1,4 @@
-.Модуль межфилиального обмена
+.xref:index.adoc[Модуль межфилиального обмена]
 * xref:index.adoc[]
 ** xref:module-structure.adoc[]
 ** xref:bp-processing-tasks.adoc[]
