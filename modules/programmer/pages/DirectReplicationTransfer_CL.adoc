@@ -18,7 +18,7 @@ public class DirectReplicationTransfer : IReplicationTransfer
 |===
 |Имя |Описание
 
-|``DirectReplicationTransfer(ObjectContext, Guid) ``
+|`DirectReplicationTransfer(ObjectContext, Guid)`
 a|Инициализирует новый экземпляр класса `DirectReplicationTransfer`.
 
 .Параметры:
